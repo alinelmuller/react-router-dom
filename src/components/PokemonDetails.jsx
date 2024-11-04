@@ -1,15 +1,20 @@
 // src/components/PokemonDetails.jsx
+import { useParams } from 'react-router-dom';
 
 const PokemonDetails = (props) => {
     console.log(props); // Always verify that any props are being passed correctly!
+
+    const { pokemonId } = useParams();
+    const singlePokemon = props.pokemon.find((poke) => poke._id === Number(pokemonId));
+
     return (
       <>
-        <h2>Pokemon Details</h2>
+        <h2>{singlePokemon.name}</h2>
         <dl>
           <dt>Weight:</dt>
-          <dd></dd>
+          <dd>{singlePokemon.weight}</dd>
           <dt>Height:</dt>
-          <dd></dd>
+          <dd>{singlePokemon.height}</dd>
         </dl>
       </>
     );
